@@ -1,13 +1,8 @@
 import { Component } from 'react';
 import { ImSearch } from 'react-icons/im';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-const styles = {
-  form: {
-    marginBottom: 20,
-  },
-};
+const styles = { form: { marginBottom: 20 } };
 
 export default class PokemonForm extends Component {
   state = {
@@ -22,7 +17,8 @@ export default class PokemonForm extends Component {
     event.preventDefault();
 
     if (this.state.pokemonName.trim() === '') {
-      return toast('🦄 Wow so easy!');
+      toast.error('Введите имя покемона.');
+      return;
     }
 
     this.props.onSubmit(this.state.pokemonName);
@@ -40,7 +36,7 @@ export default class PokemonForm extends Component {
         />
         <button type="submit">
           <ImSearch style={{ marginRight: 8 }} />
-          Знайти
+          Найти
         </button>
       </form>
     );
